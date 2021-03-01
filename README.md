@@ -18,7 +18,6 @@
 - has_many :items
 - has_many :buys
 
-
 ## items テーブル
 
 | Column      | Type       | Options                      |
@@ -45,7 +44,6 @@
 | item       | references       | null: false, foreign_key: true|
 | user       | references       | null: false, foreign_key: true|
 
-
 ### Association
 
 - belongs_to :item
@@ -57,7 +55,7 @@
 | Column         | Type       | Options                       |
 | -------------- | ---------- | ----------------------------- |
 | postal_code    | string     | null: false                   |
-| area_id        | references | null: false                   |
+| area_id        | integer    | null: false                   |
 | city_name      | string     | null: false                   |
 | address        | string     | null: false                   |
 | building       | string     |                               | 
