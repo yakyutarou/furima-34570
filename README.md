@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column      | Type       | Options     |
-| ----------  | ---------  | ----------- |
-| goods       | string     | null: false |
-| explanation | text       | null: false |
-| category_id | integer    | null: false |
-| status_id   | integer    | null: false |
-| burden_id   | integer    | null: false |
-| area_id     | integer    | null: false |
-| day_id      | integer    | null: false |
-| price       | integer    | null: false |
-| user        | references | null: false | 
+| Column      | Type       | Options                      |
+| ----------  | ---------  | ---------------------------- |      
+| goods       | string     | null: false                  |
+| explanation | text       | null: false                  |
+| category_id | integer    | null: false                  |
+| status_id   | integer    | null: false                  |
+| burden_id   | integer    | null: false                  |
+| area_id     | integer    | null: false                  |
+| day_id      | integer    | null: false                  |
+| price       | integer    | null: false                  |
+| user        | references | null: false,foreign_key: true| 
 
 ### Association
 
@@ -40,10 +40,10 @@
 
 ##  buysテーブル
 
-| Column     | Type             |  Options     |
-| ---------- | ----------       | ----------- |
-| item       | references       | null: false |
-| user       | references       | null: false |
+| Column     | Type             |  Options                      |
+| ---------- | ----------       | ----------------------------- |
+| item       | references       | null: false, foreign_key: true|
+| user       | references       | null: false, foreign_key: true|
 
 
 ### Association
@@ -54,15 +54,15 @@
 
 ## orders テーブル
 
-| Column         | Type       | Options     |
-| -------------- | ---------- | ----------- |
-| postal_code    | string     | null: false |
-| area_id        | references | null: false |
-| city_name      | string     | null: false |
-| address        | text       | null: false |
-| building       | text       | null: false |
-| phone_number   | string     | null: false |
-| buy            | references | null: false |
+| Column         | Type       | Options                       |
+| -------------- | ---------- | ----------------------------- |
+| postal_code    | string     | null: false                   |
+| area_id        | references | null: false                   |
+| city_name      | string     | null: false                   |
+| address        | string     | null: false                   |
+| building       | string     |                               | 
+| phone_number   | string     | null: false                   |
+| buy            | references | null: false,foreign_key: true |
 
 ### Association
 
