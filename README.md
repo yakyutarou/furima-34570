@@ -4,7 +4,7 @@
 
 | Column             | Type   | Options     |
 | ----------         | ------ | ----------- |
-| email              | string | null: false |
+| email              | string | null: false ,unique :ture |
 | encrypted_password | string | null: false |
 | nickname           | string | null: false |
 | miyoji             | string | null: false |
@@ -16,7 +16,7 @@
 ### Association
 
 - has_many :items
-- belongs_to :order
+- has_many :buys
 
 
 ## items テーブル
@@ -27,48 +27,45 @@
 | explanation | text       | null: false |
 | category_id | integer    | null: false |
 | status_id   | integer    | null: false |
-| burden_id   | text       | null: false |
-| area_id     | text       | null: false |
-| days_id     | text       | null: false |
+| burden_id   | integer    | null: false |
+| area_id     | integer    | null: false |
+| day_id      | integer    | null: false |
 | price       | integer    | null: false |
-| item        | references | null: false | 
 | user        | references | null: false | 
 
 ### Association
 
-- belongs_to :users
-- belongs_to :buy
-- has_many :orders
+- belongs_to :user
+- has_one :buys
+
 
 
 ##  buyテーブル
 
 | Column     | Type             |  Options     |
 | ---------- | ----------       | ----------- |
-| item       | referwnces       | null: false |
-| order      | referwnces       | null: false |
+| item       | references       | null: false |
+| user       | references       | null: false |
 
 
 ### Association
 
 - belongs_to :item
-- belongs_to :order
+- belongs_to :user
+- has_one :order
 
 ## order テーブル
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
-| postal_code    | integer    | null: false |
+| postal_code    | string     | null: false |
 | prefectures_id | string     | null: false |
 | city_name      | string     | null: false |
 | address        | text       | null: false |
 | building       | text       | null: false |
-| phone number   | integer    | null: false |
-| user           | references | null: false | 
-| item           | references | null: false | 
+| phone number   | string     | null: false |
+| buy            | references | null: false |
 
 ### Association
 
-- belongs_to :user
-- belongs_to :item
 - belongs_to :buy
