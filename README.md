@@ -11,7 +11,7 @@
 | namae              | string | null: false               |
 | kana_miyoji        | string | null: false               |
 | kana_namae         | string | null: false               |
-| birth_data         | data   | null: false               |
+| birth_date         | data   | null: false               |
 
 ### Association
 
