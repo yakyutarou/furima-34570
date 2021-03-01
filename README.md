@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column      | Type   | Options     |
-| ----------  | ------ | ----------- |
-| email       | string | null: false |
-| password    | string | null: false |
-| nickname    | string | null: false |
-| miyoji      | text   | null: false |
-| namae       | text   | null: false |
-| kana_miyoji | text   | null: false |
-| kana_namae  | text   | null: false |
-| birth_data  | data   | null: false |
+| Column             | Type   | Options     |
+| ----------         | ------ | ----------- |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| nickname           | string | null: false |
+| miyoji             | string | null: false |
+| namae              | string | null: false |
+| kana_miyoji        | string | null: false |
+| kana_namae         | string | null: false |
+| birth_data         | data   | null: false |
 
 ### Association
 
@@ -23,32 +23,36 @@
 
 | Column      | Type       | Options     |
 | ----------  | ---------  | ----------- |
-| goods       | text       | null: false |
+| goods       | string     | null: false |
 | explanation | text       | null: false |
 | category_id | integer    | null: false |
-| status_id   | text       | null: false |
+| status_id   | integer    | null: false |
+| burden_id   | text       | null: false |
+| area_id     | text       | null: false |
+| days_id     | text       | null: false |
+| price       | integer    | null: false |
+| item        | references | null: false | 
 | user        | references | null: false | 
 
 ### Association
 
 - belongs_to :users
-- belongs_to :haisou
+- belongs_to :buy
 - has_many :orders
 
 
-## haisous テーブル
+##  buyテーブル
 
-| Column     | Type       | Options     |
-| ---------- | ---------- | ----------- |
-| burden_id  | text       | null: false |
-| area_id    | text       | null: false |
-| days_id    | text       | null: false |
-| price      | integer    | null: false |
-| item       | references | null: false | 
+| Column     | Type             |  Options     |
+| ---------- | ----------       | ----------- |
+| item       | referwnces       | null: false |
+| order      | referwnces       | null: false |
+
 
 ### Association
 
-- has_one :item
+- belongs_to :item
+- belongs_to :order
 
 ## order テーブル
 
@@ -67,3 +71,4 @@
 
 - belongs_to :user
 - belongs_to :item
+- belongs_to :buy
