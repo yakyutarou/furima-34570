@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column             | Type   | Options     |
-| ----------         | ------ | ----------- |
+| Column             | Type   | Options                   |
+| ----------         | ------ | ------------------------- |
 | email              | string | null: false ,unique :ture |
-| encrypted_password | string | null: false |
-| nickname           | string | null: false |
-| miyoji             | string | null: false |
-| namae              | string | null: false |
-| kana_miyoji        | string | null: false |
-| kana_namae         | string | null: false |
-| birth_data         | data   | null: false |
+| encrypted_password | string | null: false               |
+| nickname           | string | null: false               |
+| miyoji             | string | null: false               |
+| namae              | string | null: false               |
+| kana_miyoji        | string | null: false               |
+| kana_namae         | string | null: false               |
+| birth_data         | data   | null: false               |
 
 ### Association
 
@@ -36,11 +36,9 @@
 ### Association
 
 - belongs_to :user
-- has_one :buys
+- has_one :buy
 
-
-
-##  buyテーブル
+##  buysテーブル
 
 | Column     | Type             |  Options     |
 | ---------- | ----------       | ----------- |
@@ -54,16 +52,16 @@
 - belongs_to :user
 - has_one :order
 
-## order テーブル
+## orders テーブル
 
 | Column         | Type       | Options     |
 | -------------- | ---------- | ----------- |
 | postal_code    | string     | null: false |
-| prefectures_id | string     | null: false |
+| area_id        | references | null: false |
 | city_name      | string     | null: false |
 | address        | text       | null: false |
 | building       | text       | null: false |
-| phone number   | string     | null: false |
+| phone_number   | string     | null: false |
 | buy            | references | null: false |
 
 ### Association
