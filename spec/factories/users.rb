@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :user do
     nickname              {'フリマ'}
     email                 {'f@ya.com'}
-    password              {'000aaa'}
+    password              {'0a0a0a'}
     password_confirmation {password}
     miyoji                {'山田'}
     namae                 {'太郎'}
