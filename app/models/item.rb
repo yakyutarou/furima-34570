@@ -9,8 +9,10 @@ class Item < ApplicationRecord
   belongs_to :area
   belongs_to :day
 
+  validates :goods, :explanation, :image, :price, presence: true
   validates :burden_id, numericality: { other_than: 1 }
   validates :category_id, numericality: { other_than: 1 }
   validates :status_id, numericality: { other_than: 1 }
   validates :area_id, numericality: { other_than: 0 }
+  validates :day_id,numericality: { other_than: 1 }
 end
