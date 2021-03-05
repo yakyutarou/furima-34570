@@ -9,7 +9,7 @@ RSpec.describe Item, type: :model do
     it '商品画像を1枚つけないと登録できない' do
       @item.image = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include ("Image can't be blank")
+      expect(@item.errors.full_messages).to include "Image can't be blank"
     end
 
     it '商品名(goods)が空だと登録できない' do
@@ -25,7 +25,6 @@ RSpec.describe Item, type: :model do
     end
 
     it 'カテゴリー(category)が未選択だと登録できない' do
-      
       @item.category_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Category must be other than 1')
@@ -38,14 +37,12 @@ RSpec.describe Item, type: :model do
     end
 
     it '配送料の負担についての情報(burden)が未選択だと登録できない' do
-      
       @item.burden_id = 1
       @item.valid?
       expect(@item.errors.full_messages).to include('Burden must be other than 1')
     end
 
     it '発送元の地域についての情報(area)が未選択だと登録できない' do
-      
       @item.area_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Area must be other than 0')
