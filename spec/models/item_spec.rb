@@ -9,7 +9,7 @@ RSpec.describe Item, type: :model do
     it '商品画像を1枚つけないと登録できない' do
       @item.image = nil
       @item.valid?
-      expect(@item.errors.full_messages).to include "Image can't be blank"
+      expect(@item.errors.full_messages).to include ("Image can't be blank")
     end
 
     it '商品名(goods)が空だと登録できない' do
@@ -24,34 +24,37 @@ RSpec.describe Item, type: :model do
       expect(@item.errors.full_messages).to include("Explanation can't be blank")
     end
 
-    it 'カテゴリー(category)の情報が空だと登録できない' do
-      @item.category_id = ''
+    it 'カテゴリー(category)が未選択だと登録できない' do
+      
+      @item.category_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Category is not a number')
+      expect(@item.errors.full_messages).to include('Category must be other than 1')
     end
 
-    it '商品の状態(status)についての情報が空だと登録できない' do
-      @item.status_id = ''
+    it '商品の状態(status)が未選択だと登録できない' do
+      @item.status_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Status is not a number')
+      expect(@item.errors.full_messages).to include('Status must be other than 1')
     end
 
-    it '配送料の負担についての情報(burden)が空だと登録できない' do
-      @item.burden_id = ''
+    it '配送料の負担についての情報(burden)が未選択だと登録できない' do
+      
+      @item.burden_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Burden is not a number')
+      expect(@item.errors.full_messages).to include('Burden must be other than 1')
     end
 
-    it '発送元の地域についての情報(area)が空だと登録できない' do
-      @item.area_id = ''
+    it '発送元の地域についての情報(area)が未選択だと登録できない' do
+      
+      @item.area_id = 0
       @item.valid?
-      expect(@item.errors.full_messages).to include('Area is not a number')
+      expect(@item.errors.full_messages).to include('Area must be other than 0')
     end
 
-    it '発送までの日数についての情報(day)が空では登録できない' do
-      @item.day_id = ''
+    it '発送までの日数についての情報(day)が未選択だと登録できない' do
+      @item.day_id = 1
       @item.valid?
-      expect(@item.errors.full_messages).to include('Day is not a number')
+      expect(@item.errors.full_messages).to include('Day must be other than 1')
     end
 
     it '販売価格についての情報(price)が空だと保存できない' do
