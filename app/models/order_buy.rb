@@ -10,6 +10,6 @@ class OrderBuy
 
   def save
     Buy.create(user_id: user_id, item_id: item_id)
-    Order.create(postal_code: postal_code, area_id: area_id, city_name: city_name, address: address, building: building, buy: buy)
+    Order.create(postal_code: postal_code, area_id: area_id, city_name: city_name, address: address, building: building, phone_number: phone_number,buy: buy)
   end
 end
