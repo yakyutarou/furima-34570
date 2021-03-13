@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :item do
-    goods { 'ショールーム' }
+    goods                  { 'ショールーム' }
     explanation            { '材木は外国製' }
     category_id            { 2 }
     status_id              { 2 }
