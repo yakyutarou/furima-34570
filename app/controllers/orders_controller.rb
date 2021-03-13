@@ -1,12 +1,13 @@
 class OrdersController < ApplicationController
   before_action :item2_params, only:[:index,:create]
+  before_action :sold_out_item, only: [:index]
 
   def index
     @order_buy = OrderBuy.new
   end
 
   def create
-   
+   binding.pry
     @order_buy = OrderBuy.new(order_params)
     if @order_buy.valid?
       pay_item
@@ -29,11 +30,15 @@ class OrdersController < ApplicationController
     end
 
     def pay_item
-      Payjp.api_key = "sk_test_f893b6c9954963146b7c25bb"  
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値段
         card: order_params[:token],    # カードトークン
         currency: 'jpy'                 # 通貨の種類（日本円）
       )
+    end
+
+    def sold_out_item
+      redirect_to root_path if @item.buy.present?
     end
 end

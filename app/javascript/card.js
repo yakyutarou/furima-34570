@@ -1,5 +1,5 @@
 const pay = () => {
-  Payjp.setPublicKey("pk_test_1495cff23d3abff6423488b0"); 
+  Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) => {             //フォーム送信時イベント発火
     e.preventDefault();
@@ -19,14 +19,13 @@ const pay = () => {
         const renderDom = document.getElementById("charge-form");   ///トークンの情報をフォームに追加///
         const tokenObj = `<input value=${token} name='token' type="hidden">`;                  
         renderDom.insertAdjacentHTML("beforeend", tokenObj);        //トークンの情報をフォームに追加//
-        
+      }
         document.getElementById("card-number").removeAttribute("name");     ///カード情報の削除///
         document.getElementById("card-cvc").removeAttribute("name");
         document.getElementById("card-exp-month").removeAttribute("name");
         document.getElementById("card-exp-year").removeAttribute("name");    //カード情報の削除//
         
         document.getElementById("charge-form").submit();
-      }
     });
   });
 };
