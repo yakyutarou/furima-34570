@@ -18,10 +18,6 @@ RSpec.describe OrderBuy, type: :model do
     expect(@order_buy.errors.full_messages).to include("Token can't be blank")
   end
 
-  it '配送先の情報として、郵便番号・都道府県・市区町村・番地・電話番号が必須であること' do
-    expect(@order_buy).to be_valid
-  end
-
   it '郵便番号(pustal_code)の保存にはハイフンが必要であること（123-4567となる）' do
     @order_buy.postal_code = '1234567'
     @order_buy.valid?
@@ -78,5 +74,17 @@ RSpec.describe OrderBuy, type: :model do
   it '建物名(building)は空でも保存できること' do
     @order_buy.building = ''
     expect(@order_buy).to be_valid
+  end
+
+  it 'user_idが空だと保存できない' do
+    @order_buy.user_id = ''
+    @order_buy.valid?
+    expect(@order_buy.errors.full_messages).to include("User can't be blank")
+  end
+
+  it 'item_idが空だと保存できない' do
+    @order_buy.item_id = ''
+    @order_buy.valid?
+    expect(@order_buy.errors.full_messages).to include("Item can't be blank")
   end
 end

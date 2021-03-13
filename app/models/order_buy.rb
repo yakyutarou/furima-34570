@@ -7,12 +7,11 @@ class OrderBuy
     validates :area_id, numericality: { other_than: 0 }
     validates :city_name, :address
     validates :phone_number, format: { with: /\A0[0-9]{9,10}\z/ } # 携帯番号・固定電話両方可、ハイフンなし
+    validates :token, :user_id, :item_id
   end
 
   def save
     buy = Buy.create(user_id: user_id, item_id: item_id)
     Order.create(postal_code: postal_code, area_id: area_id, city_name: city_name, address: address, building: building, phone_number: phone_number, buy: buy)
   end
-
-  validates :token, presence: true
 end
