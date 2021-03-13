@@ -8,7 +8,12 @@ RSpec.describe OrderBuy, type: :model do
     sleep(1)
   end
 
-  it 'tokenがあれば保存ができること' do
+  it '全ての項目があれば、登録できること' do
+    expect(@order_buy).to be_valid
+  end
+
+  it '電話番号は固定電話の形でも登録できること' do
+    @order_buy.phone_number = '0724335678'
     expect(@order_buy).to be_valid
   end
 
@@ -46,11 +51,6 @@ RSpec.describe OrderBuy, type: :model do
     @order_buy.phone_number = '09-1234-56'
     @order_buy.valid?
     expect(@order_buy.errors.full_messages).to include('Phone number is invalid')
-  end
-
-  it '電話番号は固定電話の形でも登録できること' do
-    @order_buy.phone_number = '0724335678'
-    expect(@order_buy).to be_valid
   end
 
   it '都道府県(area_id)を選択していないと保存できないこと' do
