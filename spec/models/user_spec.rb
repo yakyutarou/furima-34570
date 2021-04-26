@@ -119,14 +119,14 @@ RSpec.describe User, type: :model do
       @user.kana_miyoji = ''
       @user.kana_namae = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("Kana miyoji can't be blank", "Kana namae can't be blank")
+      expect(@user.errors.full_messages).to include("Kana miyoji is invalid", "Kana namae is invalid")
     end
 
     it 'ユーザー本名のフリガナは、全角（カタカナ）以外だと登録ができない' do
-      @user.miyoji = 'さs佐'
-      @user.namae = 'ひhi弘'
+      @user.kana_miyoji = 'さs佐'
+      @user.kana_namae = 'ひhi弘'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Miyoji is invalid', 'Namae is invalid')
+      expect(@user.errors.full_messages).to include("Kana miyoji is invalid", "Kana namae is invalid")
     end
 
     it '生年月日が空では登録できない' do
